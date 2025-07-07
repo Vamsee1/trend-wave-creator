@@ -20,8 +20,17 @@ const Index = () => {
     'sunset-vibes': 'bg-gradient-to-br from-orange-400 via-red-400 to-pink-400',
     'forest-dream': 'bg-gradient-to-br from-green-400 via-emerald-400 to-teal-400',
     'midnight-aurora': 'bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500',
+    'cherry-blossom': 'bg-gradient-to-br from-pink-300 via-rose-400 to-purple-400',
+    'arctic-glow': 'bg-gradient-to-br from-cyan-300 via-blue-400 to-indigo-500',
+    'golden-hour': 'bg-gradient-to-br from-yellow-300 via-orange-400 to-red-400',
     'study-focus': 'bg-[url("https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2128&q=80")] bg-cover bg-center bg-fixed',
-    'deep-work': 'bg-[url("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")] bg-cover bg-center bg-fixed'
+    'deep-work': 'bg-[url("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")] bg-cover bg-center bg-fixed',
+    'mountain-zen': 'bg-[url("https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2128&q=80")] bg-cover bg-center bg-fixed',
+    'forest-light': 'bg-[url("https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2128&q=80")] bg-cover bg-center bg-fixed',
+    'coding-night': 'bg-[url("https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2128&q=80")] bg-cover bg-center bg-fixed',
+    'modern-workspace': 'bg-[url("https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2128&q=80")] bg-cover bg-center bg-fixed',
+    'minimalist-desk': 'bg-[url("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2128&q=80")] bg-cover bg-center bg-fixed',
+    'laptop-study': 'bg-[url("https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2128&q=80")] bg-cover bg-center bg-fixed'
   };
 
   const toggleFullscreen = () => {
@@ -103,9 +112,11 @@ const Index = () => {
           </div>
         )}
 
-        {/* Right Side - Timer */}
-        <div className={`flex-1 flex flex-col items-center justify-center px-6 ${isFullscreen ? 'min-h-screen' : ''}`}>
-          <PomodoroTimer isFullscreen={isFullscreen} onToggleFullscreen={toggleFullscreen} />
+        {/* Center/Right Side - Timer with improved positioning */}
+        <div className={`flex-1 flex flex-col items-center justify-center px-6 ${isFullscreen ? 'min-h-screen' : ''} ${showTasks && !isFullscreen ? 'ml-0' : 'ml-auto mr-auto max-w-4xl'}`}>
+          <div className={`w-full ${!showTasks || isFullscreen ? 'text-center' : 'text-center lg:text-right lg:pr-12'}`}>
+            <PomodoroTimer isFullscreen={isFullscreen} onToggleFullscreen={toggleFullscreen} />
+          </div>
         </div>
       </div>
 

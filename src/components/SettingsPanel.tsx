@@ -19,11 +19,25 @@ export const SettingsPanel = ({ isOpen, onClose, currentTheme, onThemeChange }: 
   const [autoBreak, setAutoBreak] = useState(true);
 
   const themes = [
-    { id: 'seoul-sunrise', name: 'Seoul Sunrise', colors: 'Purple to Orange' },
-    { id: 'ocean-breeze', name: 'Ocean Breeze', colors: 'Blue to Green' },
-    { id: 'sunset-vibes', name: 'Sunset Vibes', colors: 'Orange to Pink' },
-    { id: 'forest-dream', name: 'Forest Dream', colors: 'Green to Teal' },
-    { id: 'midnight-aurora', name: 'Midnight Aurora', colors: 'Indigo to Pink' }
+    // Gradient Themes
+    { id: 'seoul-sunrise', name: 'Seoul Sunrise', colors: '🌅 Purple to Orange', category: 'Gradient' },
+    { id: 'ocean-breeze', name: 'Ocean Breeze', colors: '🌊 Blue to Green', category: 'Gradient' },
+    { id: 'sunset-vibes', name: 'Sunset Vibes', colors: '🌇 Orange to Pink', category: 'Gradient' },
+    { id: 'forest-dream', name: 'Forest Dream', colors: '🌿 Green to Teal', category: 'Gradient' },
+    { id: 'midnight-aurora', name: 'Midnight Aurora', colors: '🌌 Indigo to Pink', category: 'Gradient' },
+    { id: 'cherry-blossom', name: 'Cherry Blossom', colors: '🌸 Pink to Purple', category: 'Gradient' },
+    { id: 'arctic-glow', name: 'Arctic Glow', colors: '❄️ Cyan to Indigo', category: 'Gradient' },
+    { id: 'golden-hour', name: 'Golden Hour', colors: '✨ Yellow to Red', category: 'Gradient' },
+    
+    // Photo Backgrounds
+    { id: 'study-focus', name: 'Library Study', colors: '📚 Classic Library', category: 'Study Spaces' },
+    { id: 'deep-work', name: 'Forest Path', colors: '🌲 Nature Focus', category: 'Nature' },
+    { id: 'mountain-zen', name: 'Mountain Peak', colors: '⛰️ Misty Mountains', category: 'Nature' },
+    { id: 'forest-light', name: 'Forest Sunbeam', colors: '🌳 Golden Light', category: 'Nature' },
+    { id: 'coding-night', name: 'Circuit Board', colors: '💻 Tech Vibes', category: 'Tech' },
+    { id: 'modern-workspace', name: 'MacBook Setup', colors: '🖥️ Modern Office', category: 'Workspace' },
+    { id: 'minimalist-desk', name: 'Clean Workspace', colors: '✨ Minimalist', category: 'Workspace' },
+    { id: 'laptop-study', name: 'Laptop Study', colors: '💻 Study Mode', category: 'Study Spaces' }
   ];
 
   if (!isOpen) return null;
@@ -61,7 +75,7 @@ export const SettingsPanel = ({ isOpen, onClose, currentTheme, onThemeChange }: 
                 <SelectTrigger className="bg-white/10 border-white/20 text-white">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-800 border-white/20 text-white">
+                <SelectContent className="bg-gray-800 border-white/20 text-white max-h-60">
                   {themes.map((theme) => (
                     <SelectItem key={theme.id} value={theme.id} className="hover:bg-white/10">
                       <div>
@@ -77,10 +91,10 @@ export const SettingsPanel = ({ isOpen, onClose, currentTheme, onThemeChange }: 
             <div className="mt-4 p-4 bg-white/5 rounded-xl border border-white/10">
               <div className="flex items-center gap-2 text-pink-400 mb-2">
                 <TrendingUp className="h-4 w-4" />
-                <span className="text-sm font-medium">Trending!</span>
+                <span className="text-sm font-medium">Trending Backgrounds!</span>
               </div>
               <p className="text-xs text-white/70">
-                Looking for more themes? Check out our premium collection with exclusive aesthetic backgrounds!
+                New aesthetic backgrounds added: Mountain Zen, Cherry Blossom, Arctic Glow, and more study-focused environments!
               </p>
             </div>
           </div>
