@@ -37,7 +37,7 @@ export const PomodoroTimer = ({ isFullscreen, onToggleFullscreen }: PomodoroTime
   });
 
   const [showTechniques, setShowTechniques] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const techniques = {

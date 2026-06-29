@@ -112,9 +112,8 @@ const Index = () => {
           </div>
         )}
 
-        {/* Center/Right Side - Timer with improved positioning */}
-        <div className={`flex-1 flex flex-col items-center justify-center px-6 ${isFullscreen ? 'min-h-screen' : ''} ${showTasks && !isFullscreen ? 'ml-0' : 'ml-auto mr-auto max-w-4xl'}`}>
-          <div className={`w-full ${!showTasks || isFullscreen ? 'text-center' : 'text-center lg:text-right lg:pr-12'}`}>
+        <div className={`flex-1 flex items-center justify-center px-6 ${isFullscreen ? 'min-h-screen' : ''}`}>
+          <div className="w-full flex justify-center">
             <PomodoroTimer isFullscreen={isFullscreen} onToggleFullscreen={toggleFullscreen} />
           </div>
         </div>
