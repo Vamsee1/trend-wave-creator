@@ -56,8 +56,10 @@ const Index = () => {
   }, []);
 
   return (
-    <div className={`min-h-screen transition-all duration-1000 ${themes[currentTheme as keyof typeof themes]} ${isFullscreen ? 'p-0' : ''}`}>
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]"></div>
+    <div className={`min-h-screen relative transition-all duration-1000 ${themes[currentTheme as keyof typeof themes]} ${isFullscreen ? 'p-0' : ''}`}>
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] z-0"></div>
+      <NatureScene />
+
       
       {/* Header */}
       {!isFullscreen && (
