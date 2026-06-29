@@ -296,42 +296,63 @@ export const PomodoroTimer = ({ isFullscreen, onToggleFullscreen }: PomodoroTime
         ))}
       </div>
 
-      {/* Enhanced Timer Display */}
-      <div className="mb-8">
-        <div className="relative">
-          <svg className="w-80 h-80 transform -rotate-90" viewBox="0 0 100 100">
+      {/* 3D Animated Timer Display */}
+      <div className="mb-8 flex justify-center">
+        <div className="relative timer-3d" style={{ width: 360, height: 360 }}>
+          {/* Outer rotating glow ring */}
+          <div className="absolute inset-0 rounded-full animate-spin-slower opacity-70"
+               style={{
+                 background: 'conic-gradient(from 0deg, transparent, rgba(168,85,247,0.6), transparent, rgba(236,72,153,0.6), transparent)',
+                 filter: 'blur(20px)',
+               }} />
+
+          {/* Middle rotating dotted ring */}
+          <div className="absolute inset-4 rounded-full animate-spin-slow border-2 border-dashed border-white/30" />
+
+          {/* Pulsing aura */}
+          <div className="absolute inset-8 rounded-full timer-ring-pulse"
+               style={{
+                 background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)',
+               }} />
+
+          {/* Progress SVG */}
+          <svg className="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="progressGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#a78bfa" />
+                <stop offset="50%" stopColor="#ec4899" />
+                <stop offset="100%" stopColor="#fbbf24" />
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="2" result="blur" />
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <circle cx="50" cy="50" r="42" stroke="rgba(255,255,255,0.08)" strokeWidth="3" fill="rgba(0,0,0,0.25)" />
             <circle
-              cx="50"
-              cy="50"
-              r="45"
-              stroke="rgba(255,255,255,0.1)"
-              strokeWidth="2"
+              cx="50" cy="50" r="42"
+              stroke="url(#progressGrad)"
+              strokeWidth="4"
+              strokeLinecap="round"
               fill="transparent"
-            />
-            <circle
-              cx="50"
-              cy="50"
-              r="45"
-              stroke="white"
-              strokeWidth="3"
-              fill="transparent"
-              strokeDasharray={`${2 * Math.PI * 45}`}
-              strokeDashoffset={`${2 * Math.PI * 45 * (1 - getProgress() / 100)}`}
-              className="transition-all duration-1000 ease-linear drop-shadow-lg"
-              style={{ filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.3))' }}
+              strokeDasharray={`${2 * Math.PI * 42}`}
+              strokeDashoffset={`${2 * Math.PI * 42 * (1 - getProgress() / 100)}`}
+              className="transition-all duration-1000 ease-linear"
+              filter="url(#glow)"
             />
           </svg>
-          
+
+          {/* Center time text */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
-              <div className="text-7xl font-light text-white mb-2 tracking-wider drop-shadow-lg">
+              <div className="text-7xl font-extralight text-white tracking-wider drop-shadow-[0_0_25px_rgba(255,255,255,0.5)]">
                 {formatTime(timer.minutes, timer.seconds)}
               </div>
-              <div className="text-white/70 text-lg mb-2">
+              <div className="text-white/80 text-base mt-2 uppercase tracking-[0.3em]">
                 {sessionLabels[timer.sessionType]}
               </div>
               {timer.technique === 'flowmodoro' && timer.flowSkippedBreaks > 0 && (
-                <div className="text-yellow-300 text-sm">
+                <div className="text-yellow-300 text-sm mt-2">
                   🔥 Flow: {timer.flowSkippedBreaks} breaks skipped
                 </div>
               )}
@@ -339,6 +360,7 @@ export const PomodoroTimer = ({ isFullscreen, onToggleFullscreen }: PomodoroTime
           </div>
         </div>
       </div>
+
 
       {/* Enhanced Control Buttons */}
       <div className="flex justify-center gap-4 mb-8">
