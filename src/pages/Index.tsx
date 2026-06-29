@@ -4,8 +4,11 @@ import { PomodoroTimer } from '@/components/PomodoroTimer';
 import { SettingsPanel } from '@/components/SettingsPanel';
 import { StatsPanel } from '@/components/StatsPanel';
 import { TaskPanel } from '@/components/TaskPanel';
+import { NatureScene } from '@/components/NatureScene';
+import { AIChatbot } from '@/components/AIChatbot';
 import { Settings, BarChart3, ListTodo, Maximize } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
 
 const Index = () => {
   const [showSettings, setShowSettings] = useState(false);
