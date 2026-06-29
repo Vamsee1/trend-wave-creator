@@ -140,8 +140,11 @@ const Index = () => {
           isOpen={showStats}
           onClose={() => setShowStats(false)}
         />
-      )}
+
+      {/* AI Assistant Chatbot */}
+      <AIChatbot />
     </div>
+
   );
 };
 
